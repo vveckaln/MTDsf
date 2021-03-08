@@ -4,6 +4,7 @@
 #include "TCanvas.h"
 #include "TLatex.h"
 #include "TROOT.h"
+#include "TStyle.h"
 #include <string>
 #include "tdrstyle.C"
 
@@ -53,6 +54,7 @@ int scalefactors(const char * name)
   enum  MTDsections     {BARREL = 0, ENDCAP = 1}; 
 
   gROOT -> SetBatch(kTRUE);
+  gStyle -> SetOptStat(0);
   TFile * file = TFile::Open(name, "update");
     
   {
@@ -190,7 +192,6 @@ int scalefactors(const char * name)
   }
  
   //=================================================================================================//
-  //EleIso efficiency scale factors
   {
     const unsigned char   nbin_Pt                                                   = 3;
     const float           bins_Pt[nbin_Pt + 1]                                          = {10.0, 20.0, 40.0, 200.0};
